@@ -1,0 +1,17 @@
+{% extends "jobs/base.html" %}
+{% block content %}
+<h2>Your Job Application</h2>
+<a href="{% url 'job_add'%}">Add New Job</a>
+<ul>
+    {% for job in jobs %}
+    <li>
+        <strong>{{job.position}}</strong> at {{job.company}}-
+        Status: {{job.status}}-
+        <a href="{% url 'job_edit' job.pk %}">Edit</a>
+        <a href="{% url 'job_delete' job.pk %}">Delete</a>
+    </li>
+    {% empty %}
+    <li>No Applications yet</li>
+    {% endfor %}
+</ul>
+{% endblock %}
